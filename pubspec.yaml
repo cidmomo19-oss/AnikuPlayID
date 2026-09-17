@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 3.0.14+57
 
 environment:
-  sdk: ^3.11.3
+  sdk: ^3.11.0
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -73,7 +73,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.14.4
   flutter_native_splash: ^2.4.7
   build_runner: ^2.15.1
-  drift_dev: ^2.34.4
+  drift_dev: '2.34.0'
 
 flutter_launcher_icons:
   android: true
