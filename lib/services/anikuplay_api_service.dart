@@ -57,7 +57,7 @@ class AnikuPlayApiService {
   final String baseUrl;
 
   AnikuPlayApiService({
-    this.baseUrl = 'https://anikuplay-api.workers.dev',
+    this.baseUrl = 'https://anikuplay-api.cidmomo1000.workers.dev',
   });
 
   Future<List<AnikuPlayAnime>> getAnimes() async {
