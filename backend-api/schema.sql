@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS animes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT NOT NULL,
+  description TEXT,
+  cover_url TEXT,
+  status TEXT DEFAULT 'Ongoing'
+);
+
+CREATE TABLE IF NOT EXISTS episodes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  anime_id INTEGER NOT NULL,
+  episode_number INTEGER NOT NULL,
+  title TEXT,
+  video_url TEXT NOT NULL,
+  FOREIGN KEY (anime_id) REFERENCES animes(id) ON DELETE CASCADE
+);

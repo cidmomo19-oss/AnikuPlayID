@@ -1,0 +1,8 @@
+name = "anikuplay-api"
+main = "src/index.js"
+compatibility_date = "2024-09-18"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "anikuplay_db"
+database_id = "578af90e-d996-446c-8d1c-057fbcc679a0"
