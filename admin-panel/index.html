@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnikuPlay Admin Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+  <div class="max-w-6xl mx-auto p-6">
+    <!-- Header -->
+    <header class="flex flex-col md:flex-row justify-between items-center pb-6 border-b border-gray-800 gap-4">
+      <div>
+        <h1 class="text-3xl font-bold text-red-500">AnikuPlay Admin Panel</h1>
+        <p class="text-gray-400 text-sm">Kelola Katalog Anime & Episode Cloudflare D1</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <label for="apiUrl" class="text-sm font-medium">Worker URL:</label>
+        <input type="text" id="apiUrl" value="http://localhost:8787" class="bg-gray-800 text-white px-3 py-1.5 rounded border border-gray-700 text-sm w-48 md:w-64">
+        <label for="apiKey" class="text-sm font-medium">API Key:</label>
+        <input type="password" id="apiKey" value="default_admin_secret" class="bg-gray-800 text-white px-3 py-1.5 rounded border border-gray-700 text-sm w-36">
+      </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+
+      <!-- Anime List & Add Form -->
+      <div class="lg:col-span-2 space-y-6">
+        <!-- Add / Edit Anime Card -->
+        <div class="bg-gray-800 p-5 rounded-lg shadow-lg border border-gray-700">
+          <h2 id="animeFormTitle" class="text-xl font-semibold mb-4 text-red-400">Tambah Anime Baru</h2>
+          <form id="animeForm" class="space-y-4">
+            <input type="hidden" id="animeId">
+            <div>
+              <label class="block text-sm font-medium mb-1">Judul Anime</label>
+              <input type="text" id="animeTitle" required class="w-full bg-gray-900 border border-gray-700 rounded px-3 py-2 text-white">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Deskripsi</label>
+              <textarea id="animeDescription" rows="3" class="w-full bg-gray-900 border border-gray-700 rounded px-3 py-2 text-white"></textarea>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1">Cover URL</label>
+                <input type="url" id="animeCover" class="w-full bg-gray-900 border border-gray-700 rounded px-3 py-2 text-white" placeholder="https://...">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Status</label>
+                <select id="animeStatus" class="w-full bg-gray-900 border border-gray-700 rounded px-3 py-2 text-white">
+                  <option value="Ongoing">Ongoing</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-medium px-4 py-2 rounded transition">Simpan Anime</button>
+              <button type="button" id="cancelEditAnime" class="hidden bg-gray-700 hover:bg-gray-600 text-white font-medium px-4 py-2 rounded transition">Batal</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Anime List Card -->
+        <div class="bg-gray-800 p-5 rounded-lg shadow-lg border border-gray-700">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-semibold text-gray-200">Daftar Anime</h2>
+            <button id="refreshAnimeBtn" class="bg-gray-700 hover:bg-gray-600 text-sm px-3 py-1.5 rounded text-white">Refresh List</button>
+          </div>
+          <div id="animeList" class="space-y-3 max-h-[500px] overflow-y-auto pr-1">
+            <p class="text-gray-400 text-sm">Memuat data...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Episode Management Panel -->
+      <div class="bg-gray-800 p-5 rounded-lg shadow-lg border border-gray-700 h-fit space-y-6">
+        <div>
+          <h2 class="text-xl font-semibold mb-2 text-red-400">Kelola Episode</h2>
+          <p id="selectedAnimeTitle" class="text-sm text-gray-400 italic mb-4">Pilih anime dari daftar di samping untuk mengelola episode.</p>
+
+          <form id="episodeForm" class="space-y-3 hidden">
+            <input type="hidden" id="epAnimeId">
+            <div>
+              <label class="block text-xs font-medium mb-1">Nomor Episode</label>
+              <input type="number" id="epNumber" required min="1" class="w-full bg-gray-900 border border-gray-700 rounded px-3 py-1.5 text-white text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-medium mb-1">Judul Episode (Opsional)</label>
+              <input type="text" id="epTitle" class="w-full bg-gray-900 border border-gray-700 rounded px-3 py-1.5 text-white text-sm" placeholder="Episode 1">
+            </div>
+            <div>
+              <label class="block text-xs font-medium mb-1">Video Stream URL (.mp4 / .m3u8)</label>
+              <input type="url" id="epVideoUrl" required class="w-full bg-gray-900 border border-gray-700 rounded px-3 py-1.5 text-white text-sm" placeholder="https://...">
+            </div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded text-sm transition">Tambah Episode</button>
+          </form>
+        </div>
+
+        <div>
+          <h3 class="text-md font-semibold text-gray-300 mb-3 border-b border-gray-700 pb-1">Daftar Episode</h3>
+          <div id="episodeList" class="space-y-2 max-h-[400px] overflow-y-auto">
+            <p class="text-gray-500 text-xs">Belum ada anime dipilih.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
