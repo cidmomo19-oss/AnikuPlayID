@@ -1,6 +1,5 @@
-package com.oneb.anikin
+package com.oneb.anikuplay
 
-import com.oneb.anikuplay.R
 import android.app.DownloadManager
 import android.content.ClipData
 import android.content.BroadcastReceiver

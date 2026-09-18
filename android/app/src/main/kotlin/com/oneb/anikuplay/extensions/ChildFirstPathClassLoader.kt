@@ -1,4 +1,4 @@
-package com.oneb.anikin.extensions
+package com.oneb.anikuplay.extensions
 
 import dalvik.system.PathClassLoader
 

@@ -1,6 +1,5 @@
-package com.oneb.anikin
+package com.oneb.anikuplay
 
-import com.oneb.anikuplay.R
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.SharedPreferences

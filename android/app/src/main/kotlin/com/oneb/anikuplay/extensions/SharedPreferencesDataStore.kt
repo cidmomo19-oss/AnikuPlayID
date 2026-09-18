@@ -1,4 +1,4 @@
-package com.oneb.anikin.extensions
+package com.oneb.anikuplay.extensions
 
 import android.content.SharedPreferences
 import androidx.preference.PreferenceDataStore

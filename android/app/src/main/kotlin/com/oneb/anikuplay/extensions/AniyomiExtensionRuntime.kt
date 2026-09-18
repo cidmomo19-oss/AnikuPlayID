@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.oneb.anikin.extensions
+package com.oneb.anikuplay.extensions
 
 import android.annotation.SuppressLint
 import android.app.Application
@@ -1337,8 +1337,8 @@ class AniyomiExtensionRuntime private constructor(context: Context) {
         private const val ANIME_METADATA_NSFW = "tachiyomi.animeextension.nsfw"
         private const val MANGA_METADATA_NSFW = "tachiyomi.extension.nsfw"
         private const val PRIVATE_EXTENSION_EXTENSION = "ext"
-        private const val PACKAGE_INSTALL_ACTION = "com.oneb.anikin.extensions.INSTALL_RESULT"
-        private const val PACKAGE_UNINSTALL_ACTION = "com.oneb.anikin.extensions.UNINSTALL_RESULT"
+        private const val PACKAGE_INSTALL_ACTION = "com.oneb.anikuplay.extensions.INSTALL_RESULT"
+        private const val PACKAGE_UNINSTALL_ACTION = "com.oneb.anikuplay.extensions.UNINSTALL_RESULT"
         private const val PACKAGE_INSTALL_TIMEOUT_MS = 5 * 60 * 1000L
         private const val PACKAGE_VISIBILITY_RETRIES = 20
         private const val PACKAGE_VISIBILITY_RETRY_DELAY_MS = 100L
