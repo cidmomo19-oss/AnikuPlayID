@@ -1,4 +1,4 @@
-package com.oneb.anikin.extensions
+package com.oneb.anikuplay.extensions
 
 import android.content.Context
 import android.content.Intent
@@ -137,7 +137,7 @@ class AniyomiExtensionsPlugin(private val context: Context) : MethodChannel.Meth
     }
 
     companion object {
-        private const val CHANNEL_NAME = "com.oneb.anikin/aniyomi_extensions"
+        private const val CHANNEL_NAME = "com.oneb.anikuplay/aniyomi_extensions"
         private const val TAG = "AniyomiExtensions"
 
         fun registerWith(context: Context, messenger: BinaryMessenger) {

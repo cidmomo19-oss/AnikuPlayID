@@ -1,4 +1,4 @@
-package com.oneb.anikin.extensions
+package com.oneb.anikuplay.extensions
 
 import eu.kanade.tachiyomi.animesource.AnimeCatalogueSource
 import eu.kanade.tachiyomi.animesource.AnimeSource

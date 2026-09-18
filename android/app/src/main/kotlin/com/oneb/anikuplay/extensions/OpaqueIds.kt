@@ -1,4 +1,4 @@
-package com.oneb.anikin.extensions
+package com.oneb.anikuplay.extensions
 
 import android.util.Base64
 import eu.kanade.tachiyomi.animesource.model.AnimeUpdateStrategy

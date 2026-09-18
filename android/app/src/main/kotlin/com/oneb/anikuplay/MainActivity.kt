@@ -1,6 +1,5 @@
-package com.oneb.anikin
+package com.oneb.anikuplay
 
-import com.oneb.anikuplay.R
 import android.app.PictureInPictureParams
 import android.app.UiModeManager
 import android.content.Context
@@ -13,7 +12,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Rational
-import com.oneb.anikin.extensions.AniyomiExtensionsPlugin
+import com.oneb.anikuplay.extensions.AniyomiExtensionsPlugin
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
@@ -37,7 +36,7 @@ class MainActivity : FlutterActivity() {
 		)
 		MethodChannel(
 			flutterEngine.dartExecutor.binaryMessenger,
-			"com.oneb.anikin/device",
+			"com.oneb.anikuplay/device",
 		).setMethodCallHandler { call, result ->
 			when (call.method) {
 				"isTelevision" -> result.success(isTelevisionDevice())
@@ -46,7 +45,7 @@ class MainActivity : FlutterActivity() {
 		}
 		playbackChannel = MethodChannel(
 			flutterEngine.dartExecutor.binaryMessenger,
-			"com.oneb.anikin/playback",
+			"com.oneb.anikuplay/playback",
 		).also { channel ->
 			channel.setMethodCallHandler { call, result ->
 				when (call.method) {
@@ -72,7 +71,7 @@ class MainActivity : FlutterActivity() {
 		}
 		MethodChannel(
 			flutterEngine.dartExecutor.binaryMessenger,
-			"com.oneb.anikin/app_update",
+			"com.oneb.anikuplay/app_update",
 		).setMethodCallHandler { call, result ->
 			when (call.method) {
 				"downloadAndInstall" -> {
